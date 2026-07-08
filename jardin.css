@@ -1,0 +1,288 @@
+/* ============================
+   JARDÍN ROMÁNTICO 3D
+   Archivo: jardin.css
+============================ */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+    background:#020312;
+}
+
+/* Canvas de Three.js */
+canvas{
+    display:block;
+}
+
+/* Contenedor de la escena */
+#escena{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+/* ==========================
+      PANTALLA DE CARGA
+========================== */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(180deg,#020312,#09142b,#13284a);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    transition:1s;
+}
+
+#loader.oculto{
+    opacity:0;
+    visibility:hidden;
+}
+
+#loader h1{
+    color:white;
+    font-size:38px;
+    margin-bottom:35px;
+    text-shadow:0 0 25px white;
+}
+
+.barra{
+    width:340px;
+    height:14px;
+    border-radius:30px;
+    overflow:hidden;
+    background:#ffffff25;
+    border:1px solid rgba(255,255,255,.2);
+}
+
+.progreso{
+    width:0%;
+    height:100%;
+    border-radius:30px;
+    background:linear-gradient(90deg,#8fd3ff,#ffffff,#ffe8f7);
+    animation:cargando 3s linear forwards;
+}
+
+@keyframes cargando{
+
+    0%{
+        width:0%;
+    }
+
+    100%{
+        width:100%;
+    }
+
+}
+
+/* ==========================
+      MENSAJE CENTRAL
+========================== */
+
+#mensaje{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    z-index:50;
+    color:white;
+    opacity:0;
+    animation:aparecer 2s forwards;
+    animation-delay:3s;
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translate(-50%,-40%);
+    }
+
+    to{
+        opacity:1;
+        transform:translate(-50%,-50%);
+    }
+
+}
+
+#mensaje h1{
+    font-size:55px;
+    margin-bottom:15px;
+    text-shadow:
+        0 0 20px #fff,
+        0 0 40px #89d6ff;
+}
+
+#mensaje p{
+
+    width:620px;
+    max-width:90vw;
+    line-height:1.8;
+    font-size:20px;
+    color:#f4f4f4;
+    margin:auto;
+}
+
+/* ==========================
+      BOTÓN
+========================== */
+
+#btnComenzar{
+
+    margin-top:35px;
+    padding:16px 42px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+
+    background:linear-gradient(45deg,#ff6fb2,#ff8fd8,#ffc2e7);
+
+    transition:.35s;
+    box-shadow:
+        0 0 25px rgba(255,105,180,.6);
+}
+
+#btnComenzar:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+        0 0 35px hotpink,
+        0 0 60px deeppink;
+
+}
+
+/* ==========================
+      EFECTO BRILLO
+========================== */
+
+#mensaje::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    border-radius:50%;
+
+    background:radial-gradient(circle,
+        rgba(255,255,255,.25),
+        transparent);
+
+    top:-70px;
+    left:50%;
+
+    transform:translateX(-50%);
+    animation:brillo 4s infinite;
+}
+
+@keyframes brillo{
+
+    0%{
+        transform:translateX(-50%) scale(.8);
+        opacity:.4;
+    }
+
+    50%{
+        transform:translateX(-50%) scale(1.2);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateX(-50%) scale(.8);
+        opacity:.4;
+    }
+
+}
+
+/* ==========================
+      ESTRELLAS CSS
+========================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#ffffffaa 1px, transparent 1px);
+
+    background-size:
+        140px 140px,
+        220px 220px;
+
+    background-position:
+        0 0,
+        80px 60px;
+
+    opacity:.35;
+    animation:estrellas 30s linear infinite;
+    pointer-events:none;
+}
+
+@keyframes estrellas{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(140px);
+    }
+
+}
+
+/* ==========================
+      RESPONSIVE
+========================== */
+
+@media(max-width:768px){
+
+    #mensaje h1{
+        font-size:36px;
+    }
+
+    #mensaje p{
+        font-size:16px;
+        width:90%;
+    }
+
+    #btnComenzar{
+        padding:14px 30px;
+        font-size:17px;
+    }
+
+    #loader h1{
+        font-size:28px;
+    }
+
+    .barra{
+        width:260px;
+    }
+
+}

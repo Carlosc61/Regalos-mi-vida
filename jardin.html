@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌙 Jardín de Amor 3D</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="jardin.css">
+
+    <!-- Fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Pantalla de carga -->
+    <div id="loader">
+        <h1>🌙 Cargando el Jardín...</h1>
+        <div class="barra">
+            <div class="progreso"></div>
+        </div>
+    </div>
+
+    <!-- Mensaje principal -->
+    <div id="mensaje">
+        <h1>✨ Bienvenida ✨</h1>
+        <p>
+            Este jardín guarda pequeños recuerdos,
+            estrellas y flores especialmente para ti.
+        </p>
+
+        <button id="btnComenzar">
+            Entrar al Jardín 🌸
+        </button>
+    </div>
+
+    <!-- Contenedor Three.js -->
+    <div id="escena"></div>
+
+    <!-- Música -->
+    <audio id="musica" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Librerías -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+    <!-- Script principal -->
+    <script src="jardin.js"></script>
+
+</body>
+</html>
