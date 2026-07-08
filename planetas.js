@@ -126,13 +126,13 @@ raycaster.setFromCamera(mouse,camera);
 const hit=raycaster.intersectObjects(scene.children);
 
 if(hit.length>0){
-
 const objeto=hit[0].object;
-
 if(objeto.userData.nombre){
-
-alert(objeto.userData.nombre);
-
+    if (objeto.userData.nombre === "Carta final") {
+        window.location.href = "jardin.html";
+    } else {
+        alert(objeto.userData.nombre);
+    }
 }
 
 }
