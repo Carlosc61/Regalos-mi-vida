@@ -1,4 +1,4 @@
-const fechaCorrecta = "2026/07/08"; // <-- Cambia por tu fecha
+const fechaCorrecta = "2020/03/03"; // <-- Cambia por tu fecha
 
 function verificar(){
 
