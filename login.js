@@ -1,55 +1,56 @@
-const fechaCorrecta = "2020/03/03"; // <-- Cambia por tu fecha
+const fechaCorrecta = "2020-03-03"; // Formato YYYY-MM-DD
 
-function verificar(){
+function verificar() {
 
-const fecha=document.getElementById("fecha").value;
+    const fecha = document.getElementById("fecha").value;
 
-const estado=document.getElementById("estado");
+    const estado = document.getElementById("estado");
 
-const barra=document.querySelector(".barra");
+    const barra = document.querySelector(".barra");
 
-const progreso=document.getElementById("progreso");
+    const progreso = document.getElementById("progreso");
 
-if(fecha!==fechaCorrecta){
+    // Reiniciar barra
+    progreso.style.width = "0%";
+    barra.style.display = "none";
 
-estado.style.color="red";
+    if (fecha !== fechaCorrecta) {
 
-estado.innerHTML="❌ Fecha incorrecta<br>Ese recuerdo aún no abre este universo.";
+        estado.style.color = "red";
+        estado.innerHTML = "❌ Fecha incorrecta<br>Ese recuerdo aún no abre este universo.";
 
-navigator.vibrate?.(200);
+        if (navigator.vibrate) {
+            navigator.vibrate(200);
+        }
 
-return;
+        return;
+    }
 
-}
+    estado.style.color = "cyan";
+    estado.innerHTML = "🔍 Verificando memoria...";
 
-estado.style.color="cyan";
+    barra.style.display = "block";
 
-estado.innerHTML="Verificando memoria...";
+    let porcentaje = 0;
 
-barra.style.display="block";
+    const intervalo = setInterval(() => {
 
-let porcentaje=0;
+        porcentaje++;
 
-let intervalo=setInterval(()=>{
+        progreso.style.width = porcentaje + "%";
 
-porcentaje++;
+        if (porcentaje >= 100) {
 
-progreso.style.width=porcentaje+"%";
+            clearInterval(intervalo);
 
-if(porcentaje>=100){
+            estado.innerHTML = "✅ Acceso autorizado<br>Bienvenida al universo ❤️";
 
-clearInterval(intervalo);
+            setTimeout(() => {
+                window.location.href = "universo.html";
+            }, 2000);
 
-estado.innerHTML="✅ Acceso autorizado<br>Bienvenida al universo ❤️";
+        }
 
-setTimeout(()=>{
-
-window.location.href="universo.html";
-
-},2000);
-
-}
-
-},40);
+    }, 40);
 
 }
